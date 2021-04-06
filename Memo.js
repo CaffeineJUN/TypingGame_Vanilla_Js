@@ -26,7 +26,7 @@ function introduceMember(member){
     return `이 멤버의 이름은 ${member.name} 이고 나이는 ${member.age} 이며 직업은 ${member.job}`
 }
 
-// #3 destructuring
+// #3 destructuring !!!
 //bad
 const member = {
     name: "개복치",
@@ -38,4 +38,7 @@ function introduceMember(member){
 }
 
 //better
-function
+function introduceMember(member){
+    const {name, age, job} = member;
+    return `이 멤버의 이름은 ${name} 이고 나이는 ${age} 이며 직업은 ${job}`
+}
