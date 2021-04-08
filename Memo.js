@@ -78,3 +78,31 @@
 // const fullstack = [...frontend, ...backend, ...publising];
 
 // console.log(fullstack);
+
+// #5 loop
+const BONUS_RATE = 0.2;
+const myLastYearDistanceList = [30,20];
+const myDistanceList = [99,50,60,15,...myLastYearDistanceList];
+
+// bad
+// function getMileageList(distanceList){
+//     let mileageList = [];
+//     for(let i=0; i<distanceList.length; i++){
+//         mileageList.push(distanceList[i] * BONUS_RATE)
+//     }
+//     return mileageList;
+// }
+
+// function getMileageList(distanceList){
+//     // let mileageList = distanceList.map((distance) => {
+//     //     return distance * BONUS_RATE;
+//     // });
+//     let mileageList = distanceList.map((distance) => distance * BONUS_RATE);
+
+//     return mileageList;
+// }
+
+const getMileageList = (distanceList) => distanceList.map((distance) => distance * BONUS_RATE)
+
+const MINIMUM_DISTANCE = 50;
+const qualifiedDistanceList = distance => distanceList.filter(distance => distance> MINIMUM_DISTANCE);
