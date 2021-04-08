@@ -80,9 +80,9 @@
 // console.log(fullstack);
 
 // #5 loop
-const BONUS_RATE = 0.2;
-const myLastYearDistanceList = [30,20];
-const myDistanceList = [99,50,60,15,...myLastYearDistanceList];
+// const BONUS_RATE = 0.2;
+// const myLastYearDistanceList = [30,20];
+// const myDistanceList = [99,50,60,15,...myLastYearDistanceList];
 
 // bad
 // function getMileageList(distanceList){
@@ -102,7 +102,56 @@ const myDistanceList = [99,50,60,15,...myLastYearDistanceList];
 //     return mileageList;
 // }
 
-const getMileageList = (distanceList) => distanceList.map((distance) => distance * BONUS_RATE)
+// const getMileageList = (distanceList) => distanceList.map((distance) => distance * BONUS_RATE)
 
-const MINIMUM_DISTANCE = 50;
-const qualifiedDistanceList = distance => distanceList.filter(distance => distance> MINIMUM_DISTANCE);
+// const MINIMUM_DISTANCE = 50;
+// const qualifiedDistanceList = distance => distanceList.filter(distance => distance> MINIMUM_DISTANCE);
+
+// #6 map, filter, reduce
+// const animals = [
+//     { name: 'lion', size: 'big', isAgressive: true, weight: 200},
+//     { name: 'monkey', size: 'medium', isAgressive: true, weight: 30},
+//     { name: 'cat', size: 'small', isAgressive: false, weight: 10},
+//     { name: 'rat', size: 'small', isAgressive: false, weight: 2},
+// ];
+
+// for(let i=0; i<animals.length;i++){
+//     console.log(animals[i]);
+// }
+
+// for(let animal of animals){
+//     console.log(animal.name);
+// }
+
+// let i =0;
+// while(i<10){
+//     console.log(i);
+//     i++;
+// }
+
+//foreach, map, filter, reduce
+
+// foreach
+// animals.forEach((animal,index) => console.log(animal.weight, index));
+
+// map
+// const animalsNames = animals.map(animal=> ` Animal's name is ${animal.name} and size is ${animal.size}`);
+// console.log(animalsNames);
+
+// filter
+// const smallAnimals = animals.filter(animal => animal.size === 'small');
+// console.log(smallAnimals);
+
+// reduce
+// const number = [1,10,11,23,444];
+// const total = number.reduce((acc,cur) => {
+//     console.log(acc,cur);
+//     return acc + cur;
+// });
+
+// const totalweight = animals.reduce((acc,cur) => {
+//     console.log(acc,cur.weight);
+//     return acc + cur.weight;
+// }, 0); /* 배열의 경우 초기값 0 초기화 필수 */
+
+//  console.log(totalweight);
