@@ -129,20 +129,20 @@ while(i<10){
     i++;
 }
 
-foreach, map, filter, reduce
+// foreach, map, filter, reduce
 
-foreach
+// foreach
 animals.forEach((animal,index) => console.log(animal.weight, index));
 
-map
+// map
 const animalsNames = animals.map(animal=> ` Animal's name is ${animal.name} and size is ${animal.size}`);
 console.log(animalsNames);
 
-filter
+// filter
 const smallAnimals = animals.filter(animal => animal.size === 'small');
 console.log(smallAnimals);
 
-reduce
+// reduce
 const number = [1,10,11,23,444];
 const total = number.reduce((acc,cur) => {
     console.log(acc,cur);
