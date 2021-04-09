@@ -84,7 +84,7 @@ const BONUS_RATE = 0.2;
 const myLastYearDistanceList = [30,20];
 const myDistanceList = [99,50,60,15,...myLastYearDistanceList];
 
-bad
+//bad
 function getMileageList(distanceList){
     let mileageList = [];
     for(let i=0; i<distanceList.length; i++){
