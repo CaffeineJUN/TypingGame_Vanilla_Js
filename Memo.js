@@ -153,5 +153,5 @@ const totalweight = animals.reduce((acc,cur) => {
     console.log(acc,cur.weight);
     return acc + cur.weight;
 }, 0); /* 배열의 경우 초기값 0 초기화 필수 */
-
+ 
  console.log(totalweight);
