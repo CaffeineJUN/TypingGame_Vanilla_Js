@@ -1,9 +1,13 @@
 
 /* ------------------변수------------------ */
 
+const GAME_TIME = 5;
+let time = GAME_TIME;
 let score = 0;
-let time = 9;
 let isPlaying = false;
+let checkInterval;
+let words = [];
+let timeInterval;
 
 const wordInput = document.querySelector('.word-input');
 const wordDisplay = document.querySelector('.word-display');
@@ -13,24 +17,77 @@ const button = document.querySelector('.button');
 
 /* ------------------변수------------------ */
 
-wordInput.addEventListener('input', () => {
-    if (wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()) {
-        score++;
-        scoreDisplay.innerText = score;
-        wordInput.value = '';
-    }
-});
+init();
 
-function countDown(){
-    time > 0 ? time-- : isPlaying = false;
-    timeDisplay.innerText = time;
+function init(){
+    buttonChange('게임로딩중...');
+    getWords();
+    wordInput.addEventListener('input', checkMatch);
 }
 
-// setInterval(countDown,1000);
+//게임 시작
+function run() {
+    if(isPlaying){
+        return;
+    }
+    isPlaying = true;
+    time = GAME_TIME;
+    wordInput.focus();
+    scoreDisplay.innerText = 0;
+    timeInterval = setInterval(countDown, 1000);
+    checkInterval = setInterval(checkStatus, 50);
+    buttonChange('게임중');
+}
+
+//게임 상태 확인
+function checkStatus(){
+    if(!isPlaying && time === 0){
+        buttonChange('게임시작')
+        clearInterval(checkInterval)
+    }
+}
+
+//단어 불러오기
+function getWords(){
+    axios.get('https://random-word-api.herokuapp.com/word?number=100')
+        .then(function (response) {
+            // handle success
+            response.data.forEach(word => {
+                if(word.length < 10){
+                    words.push(word);
+                }
+            });
+            console.log(words);
+            buttonChange('게임시작');
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
+}
+
+// 단어일치 체크
+function checkMatch(){
+    if (wordInput.value.toLowerCase() === wordDisplay.innerText.toLowerCase()) {
+        wordInput.value = '';
+        if(!isPlaying){
+            return;
+        }
+        score++;
+        scoreDisplay.innerText = score;
+        const randomIndex = Math.floor(Math.random() * words.length);
+        wordDisplay.innerText = words[randomIndex]
+    }
+}
 
 function buttonChange(text){
     button.innerText = text;
     text === "게임시작" ? button.classList.remove('loading') : button.classList.add('loading')
 }
 
-buttonChange('게임시작');
+function countDown(){
+    time > 0 ? time-- : isPlaying = false;
+    if(!isPlaying){
+        clearInterval(timeInterval);
+    }
+    timeDisplay.innerText = time;
+}
