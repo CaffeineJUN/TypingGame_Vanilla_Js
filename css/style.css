@@ -45,6 +45,7 @@ body {
     font-size: 0.8rem;
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
     width: 200px;
 }
 
